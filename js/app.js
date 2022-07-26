@@ -86,7 +86,7 @@ canvas.addEventListener("click", onMouseClick);
 lineWidth.addEventListener("change", onLineWidthChange);
 color.addEventListener("change", onColorChange);
 
-colorOption.forEach(color => color.addEventListener("click", onColorClick));
+colorOption.forEach((color) => color.addEventListener("click", onColorClick));
 
 modeBtn.addEventListener("click", onModeClick);
 destroyBtn.addEventListener("click", onDestroyClick);
