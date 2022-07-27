@@ -35,6 +35,9 @@ function startPainting(event) {
 
 function cancelPainting(event) {
     isPainting = false;
+    if(isFilling === true) {
+        ctx.fill();
+    }
     ctx.beginPath();
 }
 
@@ -64,11 +67,11 @@ function onModeClick() {
     }
 }
 
-function onMouseClick() {
-    if(isFilling){
-        ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    }
-}
+// function onMouseClick() {
+//     if(isFilling){
+//         ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+//     }
+// }
 
 function onDestroyClick() {
     ctx.fillStyle = "white";
@@ -97,7 +100,7 @@ function onDoubleClick(event) {
     if(text !== null) {
         ctx.save();
         ctx.lineWidth = 1;
-        ctx.font = "48px serif";
+        ctx.font = `${lineWidth.value}px serif`;
         ctx.fillText(text, event.offsetX, event.offsetY);
         ctx.restore();
     }
@@ -116,7 +119,7 @@ canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
-canvas.addEventListener("click", onMouseClick);
+//canvas.addEventListener("click", onMouseClick);
 
 lineWidth.addEventListener("change", onLineWidthChange);
 color.addEventListener("change", onColorChange);
